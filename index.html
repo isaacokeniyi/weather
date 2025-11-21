@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Weather</title>
+    <link rel="stylesheet" href="styles/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>The Weather</h1>
+      <form id="search" onsubmit="getWeather()">
+        <input type="text" id="search-bar" />
+        <button type="submit" id="search-btn">Search</button>
+      </form>
+
+      <div class="weather-info"></div>
+    </div>
+    <script src="scripts/app.js"></script>
+  </body>
+</html>
