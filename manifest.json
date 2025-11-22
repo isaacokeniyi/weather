@@ -1,7 +1,7 @@
 {
   "name": "The Weather",
   "short_name": "Weather",
-  "description": "Find the weather in any location",
+  "description": "Find the weather at any location",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
