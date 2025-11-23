@@ -1,4 +1,19 @@
 const weatherInfo = document.querySelector(".weather-info");
+const city = document.querySelector("#city");
+const temp = document.querySelector("#temp");
+const description = document.querySelector("#description");
+const minMax = document.querySelector("#minMax");
+const humidity = document.querySelector("#humidity");
+const windSpeed = document.querySelector("#windSpeed");
+
+const updateWeather = (data) => {
+  city.textContent = `${data.name}, ${data.sys.country}`;
+  temp.textContent = `${data.main.temp}°C`;
+  description.textContent = `${data.weather[0].description}`;
+  minMax.textContent = `${data.main.temp_min}°/${data.main.temp_max}°C`;
+  humidity.textContent = `${data.main.humidity}%`;
+  windSpeed.textContent = `${data.wind.speed} m/s`;
+};
 
 const getWeather = async (e) => {
   e.preventDefault();
@@ -18,14 +33,7 @@ const getWeather = async (e) => {
 
   localStorage.setItem("city", city);
 
-  weatherInfo.innerHTML = `
-          <h2>${data.name}, ${data.sys.country}</h2>
-          <p><strong>${data.main.temp}°C</strong></p>
-          <p>${data.weather[0].description}</p>
-          <p>${data.main.temp_min}°/${data.main.temp_max}°C</p>
-          <p>Humidity: ${data.main.humidity}%</p>
-          <p>Wind Speed: ${data.wind.speed} m/s</p>
-          `;
+  updateWeather(data);
 };
 
 window.onload = async () => {
@@ -41,13 +49,6 @@ window.onload = async () => {
       throw new Error("Failed to get Weather");
     }
 
-    weatherInfo.innerHTML = `
-          <h2>${data.name}, ${data.sys.country}</h2>
-          <p><strong>${data.main.temp}°C</strong></p>
-          <p>${data.weather[0].description}</p>
-          <p>${data.main.temp_min}°/${data.main.temp_max}°C</p>
-          <p>Humidity: ${data.main.humidity}%</p>
-          <p>Wind Speed: ${data.wind.speed} m/s</p>
-          `;
+    updateWeather(data);
   }
 };
