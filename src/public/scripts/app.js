@@ -11,8 +11,8 @@ const updateWeather = (data) => {
   temp.textContent = `${Math.round(data.main.temp)}°`;
   description.textContent = `${data.weather[0].description}`;
   minMax.textContent = `${Math.round(data.main.temp_min)}°/${Math.round(data.main.temp_max)}°C`;
-  humidity.textContent = `${data.main.humidity}%`;
-  windSpeed.textContent = `${data.wind.speed} m/s`;
+  humidity.textContent = `Humidity: ${data.main.humidity}%`;
+  windSpeed.textContent = `Wind speed: ${data.wind.speed} m/s`;
 };
 
 const getWeather = async (e) => {

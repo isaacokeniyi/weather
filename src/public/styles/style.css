@@ -52,4 +52,20 @@ body {
 
 #weather-info {
   margin-top: 2rem;
+  text-align: left;
+}
+
+#city {
+  text-align: center;
+}
+
+#temp {
+  font-size: 5rem;
+  margin: initial;
+}
+
+#description {
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin: initial;
 }
