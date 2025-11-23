@@ -10,16 +10,44 @@ const getWeather = async (e) => {
 
   const data = await res.json();
 
+  console.log(data);
+
   if (!res.ok) {
     throw new Error("Failed to get Weather");
   }
 
+  localStorage.setItem("city", city);
+
   weatherInfo.innerHTML = `
-          <h2>${data.name}</h2>
+          <h2>${data.name}, ${data.sys.country}</h2>
           <p><strong>${data.main.temp}°C</strong></p>
           <p>${data.weather[0].description}</p>
           <p>${data.main.temp_min}°/${data.main.temp_max}°C</p>
           <p>Humidity: ${data.main.humidity}%</p>
           <p>Wind Speed: ${data.wind.speed} m/s</p>
           `;
+};
+
+window.onload = async () => {
+  const city = localStorage.getItem("city");
+  if (city) {
+    const res = await fetch(`/weather?city=${city}`);
+
+    const data = await res.json();
+
+    console.log(data);
+
+    if (!res.ok) {
+      throw new Error("Failed to get Weather");
+    }
+
+    weatherInfo.innerHTML = `
+          <h2>${data.name}, ${data.sys.country}</h2>
+          <p><strong>${data.main.temp}°C</strong></p>
+          <p>${data.weather[0].description}</p>
+          <p>${data.main.temp_min}°/${data.main.temp_max}°C</p>
+          <p>Humidity: ${data.main.humidity}%</p>
+          <p>Wind Speed: ${data.wind.speed} m/s</p>
+          `;
+  }
 };
