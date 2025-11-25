@@ -42,7 +42,7 @@ window.addEventListener("load", async () => {
       await navigator.serviceWorker.register("/service-worker.js");
       console.log("Service worker registered");
     } catch (error) {
-      console.error("Service worker registration failed:", err);
+      console.error("Service worker registration failed:", error);
     }
   }
 });

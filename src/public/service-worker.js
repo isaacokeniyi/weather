@@ -1,5 +1,3 @@
-const { response } = require("express");
-
 const CACHE_NAME = "weather-cache-v1";
 
 const ASSETS = [
