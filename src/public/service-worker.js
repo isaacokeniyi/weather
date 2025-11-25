@@ -26,5 +26,20 @@ self.addEventListener("activate", (event) => {
 });
 
 self.addEventListener("fetch", (event) => {
-  event.respondWith(caches.match(event.request).then((response) => response || fetch(event.request)));
+  const { request } = event;
+
+  if (request.url.includes("/weather?")) {
+    event.respondWith(
+      fetch(request)
+        .then((res) => {
+          const clonedRes = res.clone();
+          caches.open(CACHE_NAME).then((cache) => cache.put(request, clonedRes));
+          return res;
+        })
+        .catch(() => caches.match(request))
+    );
+    return;
+  }
+
+  event.respondWith(caches.match(request).then((response) => response || fetch(request)));
 });
