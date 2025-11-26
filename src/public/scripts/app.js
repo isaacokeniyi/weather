@@ -1,3 +1,5 @@
+import { inject } from "@vercel/analytics";
+
 const weatherInfo = document.querySelector(".weather-info");
 const city = document.querySelector("#city");
 const temp = document.querySelector("#temp");
@@ -5,6 +7,8 @@ const description = document.querySelector("#description");
 const minMax = document.querySelector("#minMax");
 const humidity = document.querySelector("#humidity");
 const windSpeed = document.querySelector("#windSpeed");
+
+inject();
 
 const updateWeather = (data) => {
   city.textContent = `${data.name}, ${data.sys.country}`;
