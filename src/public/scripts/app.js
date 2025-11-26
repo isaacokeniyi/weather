@@ -8,8 +8,6 @@ const minMax = document.querySelector("#minMax");
 const humidity = document.querySelector("#humidity");
 const windSpeed = document.querySelector("#windSpeed");
 
-inject();
-
 const updateWeather = (data) => {
   city.textContent = `${data.name}, ${data.sys.country}`;
   temp.textContent = `${Math.round(data.main.temp)}°`;
@@ -52,6 +50,7 @@ window.addEventListener("load", async () => {
 });
 
 window.addEventListener("load", async () => {
+  inject();
   const city = localStorage.getItem("city");
   if (city) {
     const res = await fetch(`/weather?city=${city}`);
