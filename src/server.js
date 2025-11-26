@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
+import { inject } from "@vercel/analytics";
 
 dotenv.config();
 
@@ -30,5 +31,6 @@ app.get("/weather", async (req, res) => {
 });
 
 app.listen(port, () => {
+  inject();
   console.log(`Server listening at port ${port}`);
 });

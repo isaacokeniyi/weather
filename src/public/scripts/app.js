@@ -1,5 +1,3 @@
-import { inject } from "@vercel/analytics";
-
 const weatherInfo = document.querySelector(".weather-info");
 const city = document.querySelector("#city");
 const temp = document.querySelector("#temp");
@@ -50,7 +48,6 @@ window.addEventListener("load", async () => {
 });
 
 window.addEventListener("load", async () => {
-  inject();
   const city = localStorage.getItem("city");
   if (city) {
     const res = await fetch(`/weather?city=${city}`);
