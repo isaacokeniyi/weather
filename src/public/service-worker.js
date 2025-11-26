@@ -1,4 +1,4 @@
-const CACHE_NAME = "weather-cache-v1";
+const CACHE_NAME = "weather-cache-v2";
 
 const ASSETS = [
   "/",
