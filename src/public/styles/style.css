@@ -69,3 +69,13 @@ body {
   font-size: 1.2rem;
   margin: initial;
 }
+
+#otherInfo {
+  text-align: center;
+}
+
+#otherInfo ul {
+  text-align: left;
+  list-style: none;
+  line-height: 1.5rem;
+}
