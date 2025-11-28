@@ -2,7 +2,7 @@ const weatherInfo = document.querySelector(".weather-info");
 const cityName = document.querySelector("#city");
 const firstLine = document.querySelector("#firstLine");
 const secondLine = document.querySelector("#secondLine");
-const forecastLists = document.querySelectorAll("#forecast-info li");
+const forecastInfo = document.querySelector("#forecast-info");
 
 const updateWeather = (data) => {
   firstLine.textContent = `${Math.round(data.main.temp)}°C | ${data.weather[0].description}`;
@@ -12,11 +12,16 @@ const updateWeather = (data) => {
 
 const updateForecast = (data) => {
   const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  forecastInfo.innerHTML = ``;
 
-  data.list.forEach((forecast, index) => {
+  data.list.forEach((forecast) => {
     const date = new Date(forecast.dt * 1000);
     const day = days[date.getDay()];
-    console.log(day);
+    const time = `${date.getHours().toString().padStart(2, "0")}:00`;
+    const minTemp = `${Math.round(forecast.main.temp_min).toString().padStart(2, " ")}°C`;
+    const maxTemp = `${Math.round(forecast.main.temp_max).toString()}°C`.padEnd(4, " ");
+
+    forecastInfo.innerHTML += `<li>${day} ${time} | ${minTemp}/${maxTemp} | ${forecast.weather[0].description}</li>`;
   });
 };
 
