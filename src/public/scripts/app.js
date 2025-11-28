@@ -1,45 +1,32 @@
 const weatherInfo = document.querySelector(".weather-info");
-const city = document.querySelector("#city");
-const temp = document.querySelector("#temp");
-const description = document.querySelector("#description");
-const minMax = document.querySelector("#minMax");
-const humidity = document.querySelector("#humidity");
-const windSpeed = document.querySelector("#windSpeed");
-const info = document.querySelector("#info");
+const cityName = document.querySelector("#city");
+const firstLine = document.querySelector("#firstLine");
+const secondLine = document.querySelector("#secondLine");
+const forecastLists = document.querySelectorAll("#forecast-info li");
 
 const updateWeather = (data) => {
-  city.textContent = `${data.name}, ${data.sys.country}`;
-  temp.textContent = `${Math.round(data.main.temp)}°`;
-  description.textContent = `${data.weather[0].description}`;
-  minMax.textContent = `${Math.round(data.main.temp_min)}°/${Math.round(data.main.temp_max)}°C`;
-  humidity.textContent = `Humidity: ${data.main.humidity}%`;
-  windSpeed.textContent = `Wind Speed | Direction: ${data.wind.speed}m/s | ${data.wind.deg}deg`;
-  info.innerHTML = `
-            <li><strong>Weather desc:</strong> ${data.weather[0].description}</li>
-            <li><strong>Cloud coverage:</strong> ${data.clouds.all}%</li>
-            <li><strong>Temp:</strong> ${data.main.temp}°C</li>
-            <li><strong>Feels like:</strong> ${data.main.feels_like}°C</li>
-            <li><strong>Max temp:</strong> ${data.main.temp_max}°C</li>
-            <li><strong>Min temp:</strong> ${data.main.temp_min}°C</li>
-            <li><strong>Humidity:</strong> ${data.main.humidity}%</li>
-            <li><strong>Sea level pressure:</strong> ${data.main.sea_level}hPa</li>
-            <li><strong>Visibility:</strong> ${data.visibility}m</li>
-            <li><strong>Wind speed:</strong> ${data.wind.speed}m/s</li>
-            <li><strong>Wind gust:</strong> ${data.wind.gust}m/s</li>
-            <li><strong>Wind direction:</strong> ${data.wind.deg}deg</li>
-`;
+  firstLine.textContent = `${Math.round(data.main.temp)}°C | ${data.weather[0].description}`;
+  secondLine.textContent = `Humidity: ${data.main.humidity}% | Wind Speed: ${data.wind.speed}m/s`;
+  cityName.textContent = `${data.name}'s Weather`;
+};
+
+const updateForecast = (data) => {
+  const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  data.list.forEach((forecast, index) => {
+    const date = new Date(forecast.dt * 1000);
+    const day = days[date.getDay()];
+    console.log(day);
+  });
 };
 
 const getWeather = async (e) => {
   e.preventDefault();
   const city = document.querySelector("#search-bar").value;
-
   if (!city) return alert("Input a city");
 
   const res = await fetch(`/weather?city=${city}`);
-
   const data = await res.json();
-
   console.log(data);
 
   if (!res.ok) {
@@ -47,8 +34,20 @@ const getWeather = async (e) => {
   }
 
   localStorage.setItem("city", city);
-
   updateWeather(data);
+  getForecast(city);
+};
+
+const getForecast = async (city) => {
+  const res = await fetch(`/forecast?city=${city}`);
+  const data = await res.json();
+  console.log(data);
+
+  if (!res.ok) {
+    throw new Error("Failed to get Weather");
+  }
+
+  updateForecast(data);
 };
 
 window.addEventListener("load", async () => {
@@ -66,9 +65,7 @@ window.addEventListener("load", async () => {
   const city = localStorage.getItem("city");
   if (city) {
     const res = await fetch(`/weather?city=${city}`);
-
     const data = await res.json();
-
     console.log(data);
 
     if (!res.ok) {
