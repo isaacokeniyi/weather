@@ -69,3 +69,11 @@ body {
   text-align: left;
   font-family: monospace;
 }
+
+#forecast-info li {
+  white-space-collapse: preserve;
+}
+
+#forecast-info li:nth-child(n + 9) {
+  display: none;
+}
