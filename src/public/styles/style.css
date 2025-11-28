@@ -36,7 +36,7 @@ body {
 }
 
 #search-btn {
-  padding: 0.5rem 1rem;
+  padding: auto 1rem;
   background-color: #4caf50;
   color: #ffffff;
   border: none;
@@ -50,32 +50,22 @@ body {
   background-color: #45a049;
 }
 
+.heading {
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  border-top: 1px dashed black;
+  border-bottom: 1px dashed black;
+  font-size: 2rem;
+}
+
 #weather-info {
   margin-top: 2rem;
   text-align: left;
-}
-
-#city {
-  text-align: center;
-}
-
-#temp {
-  font-size: 5rem;
-  margin: initial;
-}
-
-#description {
-  font-weight: bold;
   font-size: 1.2rem;
-  margin: initial;
 }
 
-#otherInfo {
-  text-align: center;
-}
-
-#otherInfo ul {
-  text-align: left;
+#forecast-info {
   list-style: none;
-  line-height: 1.5rem;
+  text-align: left;
+  font-family: monospace;
 }
