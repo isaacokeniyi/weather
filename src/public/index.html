@@ -11,38 +11,27 @@
   </head>
   <body>
     <div class="container">
-      <h1>The Weather</h1>
       <form id="search" onsubmit="getWeather(event)">
         <input type="text" id="search-bar" placeholder="Enter city..." aria-label="enter city to check weather" />
         <button type="submit" id="search-btn">Search</button>
       </form>
 
-      <div id="weather-info">
-        <h2 id="city">city, country</h2>
-        <p id="temp">x°</p>
-        <p id="description">weather description</p>
-        <p id="minMax">min / max</p>
-        <p id="humidity">Humidity: x%</p>
-        <p id="windSpeed">Wind Speed | Direction: m/s</p>
+      <h2 class="heading" id="city">Today's Weather</h2>
 
-        <details id="otherInfo">
-          <summary>Click for more info on the weather</summary>
-          <ul id="info">
-            <li>Weather desc:</li>
-            <li>Cloud coverage: %</li>
-            <li>Temp: °C</li>
-            <li>Feels like: °C</li>
-            <li>Max temp: °C</li>
-            <li>Min temp: °C</li>
-            <li>Humidity: %</li>
-            <li>Sea level pressure: hPa</li>
-            <li>Visibility: m</li>
-            <li>Wind speed: m/s</li>
-            <li>Wind gust: m/s</li>
-            <li>Wind direction: °</li>
-          </ul>
-        </details>
+      <div id="weather-info">
+        <p id="firstLine">x°C | description</p>
+        <p id="secondLine">Humidity: % | Wind Speed: m/s</p>
       </div>
+
+      <h2 class="heading">5-Day Forecast</h2>
+
+      <ul id="forecast-info">
+        <li>Mon 00:00 | x°C/x°C | description</li>
+        <li>Tue 00:00 | x°C/x°C | description</li>
+        <li>Wed 00:00 | x°C/x°C | description</li>
+        <li>Thu 00:00 | x°C/x°C | description</li>
+        <li>Fri 00:00 | x°C/x°C | description</li>
+      </ul>
     </div>
     <script src="scripts/app.js"></script>
     <script>
