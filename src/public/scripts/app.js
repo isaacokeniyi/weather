@@ -13,7 +13,7 @@ const updateWeather = (data) => {
   description.textContent = `${data.weather[0].description}`;
   minMax.textContent = `${Math.round(data.main.temp_min)}°/${Math.round(data.main.temp_max)}°C`;
   humidity.textContent = `Humidity: ${data.main.humidity}%`;
-  windSpeed.textContent = `Wind speed: ${data.wind.speed} m/s`;
+  windSpeed.textContent = `Wind Speed | Direction: ${data.wind.speed}m/s | ${data.wind.deg}deg`;
   info.innerHTML = `
             <li><strong>Weather desc:</strong> ${data.weather[0].description}</li>
             <li><strong>Cloud coverage:</strong> ${data.clouds.all}%</li>
