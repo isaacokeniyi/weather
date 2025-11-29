@@ -3,6 +3,21 @@ const cityName = document.querySelector("#city");
 const firstLine = document.querySelector("#firstLine");
 const secondLine = document.querySelector("#secondLine");
 const forecastInfo = document.querySelector("#forecast-info");
+const dialog = document.querySelector("#dialogBox");
+
+const toggleDialog = (head, msg) => {
+  if (!head) {
+    dialog.close();
+    return;
+  }
+
+  dialog.innerHTML = `
+    <h2>${head}</h2>
+    <p>${msg}</p>
+    <button onclick="toggleDialog()">Close</button>
+  `;
+  dialog.showModal();
+};
 
 const updateWeather = (data) => {
   firstLine.textContent = `${Math.round(data.main.temp)}°C | ${data.weather[0].description}`;
@@ -28,12 +43,14 @@ const updateForecast = (data) => {
 const getWeather = async (e) => {
   e.preventDefault();
   const city = document.querySelector("#search-bar").value;
-  if (!city) return alert("Input a city");
+  if (!city) return toggleDialog("No city selected", "Please enter a city.");
 
   const res = await fetch(`/weather?city=${city}`);
   const data = await res.json();
 
-  if (!res.ok) {
+  if ((res.status = 404)) {
+    toggleDialog("City not found", "Invalid city name");
+  } else if (!res.ok) {
     throw new Error("Failed to get Weather");
   }
 
@@ -46,7 +63,9 @@ const getForecast = async (city) => {
   const res = await fetch(`/forecast?city=${city}`);
   const data = await res.json();
 
-  if (!res.ok) {
+  if ((res.status = 404)) {
+    toggleDialog("City not found", "Invalid city name");
+  } else if (!res.ok) {
     throw new Error("Failed to get Weather");
   }
 
