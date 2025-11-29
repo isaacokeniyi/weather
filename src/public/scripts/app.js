@@ -32,7 +32,6 @@ const getWeather = async (e) => {
 
   const res = await fetch(`/weather?city=${city}`);
   const data = await res.json();
-  console.log(data);
 
   if (!res.ok) {
     throw new Error("Failed to get Weather");
@@ -46,7 +45,6 @@ const getWeather = async (e) => {
 const getForecast = async (city) => {
   const res = await fetch(`/forecast?city=${city}`);
   const data = await res.json();
-  console.log(data);
 
   if (!res.ok) {
     throw new Error("Failed to get Weather");
@@ -78,5 +76,6 @@ window.addEventListener("load", async () => {
     }
 
     updateWeather(data);
+    getForecast(city);
   }
 });
