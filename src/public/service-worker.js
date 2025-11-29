@@ -1,4 +1,4 @@
-const CACHE_NAME = "weather-cache-v5";
+const CACHE_NAME = "weather-cache-v6";
 
 const ASSETS = [
   "/",
@@ -17,20 +17,23 @@ self.addEventListener("install", (event) => {
 
 self.addEventListener("activate", (event) => {
   event.waitUntil(
-    caches.keys().then((keys) =>
-      Promise.all(
-        keys.map((key) => {
-          if (key !== CACHE_NAME) return caches.delete(key);
-        })
+    caches
+      .keys()
+      .then((keys) =>
+        Promise.all(
+          keys.map((key) => {
+            if (key !== CACHE_NAME) return caches.delete(key);
+          })
+        )
       )
-    )
+      .then(() => self.clients.claim())
   );
 });
 
 self.addEventListener("fetch", (event) => {
   const { request } = event;
 
-  if (request.url.includes("/weather?")) {
+  if (request.url.includes("/weather?") || request.url.includes("/forecast?")) {
     event.respondWith(
       fetch(request)
         .then((res) => {
