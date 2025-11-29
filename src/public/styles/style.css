@@ -79,6 +79,16 @@ body {
   display: none;
 }
 
+#dialogBox {
+  border: none;
+  border-radius: 0.8rem;
+  padding: 1rem;
+  box-shadow: 0 4px 12px black;
+  &::backdrop {
+    backdrop-filter: blur(3px);
+  }
+}
+
 @media (max-width: 450px) {
   .heading {
     font-size: 1.5rem;
