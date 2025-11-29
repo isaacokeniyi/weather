@@ -48,8 +48,8 @@ const getWeather = async (e) => {
   const res = await fetch(`/weather?city=${city}`);
   const data = await res.json();
 
-  if ((res.status = 404)) {
-    toggleDialog("City not found", "Invalid city name");
+  if (res.status === 404) {
+    return toggleDialog("City not found", "Invalid city name");
   } else if (!res.ok) {
     throw new Error("Failed to get Weather");
   }
@@ -63,8 +63,8 @@ const getForecast = async (city) => {
   const res = await fetch(`/forecast?city=${city}`);
   const data = await res.json();
 
-  if ((res.status = 404)) {
-    toggleDialog("City not found", "Invalid city name");
+  if (res.status === 404) {
+    return toggleDialog("City not found", "Invalid city name");
   } else if (!res.ok) {
     throw new Error("Failed to get Weather");
   }
@@ -88,7 +88,6 @@ window.addEventListener("load", async () => {
   if (city) {
     const res = await fetch(`/weather?city=${city}`);
     const data = await res.json();
-    console.log(data);
 
     if (!res.ok) {
       throw new Error("Failed to get Weather");
