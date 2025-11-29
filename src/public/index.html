@@ -12,7 +12,7 @@
   <body>
     <div class="container">
       <form id="search" onsubmit="getWeather(event)">
-        <input type="text" id="search-bar" placeholder="Enter city..." aria-label="enter city to check weather" />
+        <input type="search" id="search-bar" placeholder="Enter city..." aria-label="enter city to check weather" />
         <button type="submit" id="search-btn">Search</button>
       </form>
 
@@ -33,6 +33,12 @@
         <li>Fri 00:00 | x°C/x°C | description</li>
       </ul>
     </div>
+
+    <dialog id="dialogBox" closedBy="any">
+      <h2>No city selected</h2>
+      <p>Please enter a city</p>
+      <button onclick="toggleDialog()">Close</button>
+    </dialog>
     <script src="scripts/app.js"></script>
     <script>
       window.va =
