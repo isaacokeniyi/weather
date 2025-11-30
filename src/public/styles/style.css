@@ -79,6 +79,19 @@ body {
   display: none;
 }
 
+#more-info {
+  padding: 0.8rem;
+  background-color: #4caf50;
+  border-radius: 1.5rem;
+  border: none;
+  color: white;
+  font-weight: bold;
+}
+
+#more-info:hover {
+  background-color: #45a049;
+}
+
 #dialogBox {
   border: none;
   border-radius: 0.8rem;
