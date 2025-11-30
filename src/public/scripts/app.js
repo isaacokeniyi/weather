@@ -44,6 +44,15 @@ const updateForecast = (data) => {
   forecastInfo.innerHTML = forecastList;
 };
 
+const showMore = () => {
+  moreInfo.innerHTML = forecastList;
+  const children = moreInfo.children;
+
+  for (let i = 0; i < 8; i++) {
+    children[i].style.display = "none";
+  }
+};
+
 const getWeather = async (e) => {
   e.preventDefault();
   const city = document.querySelector("#search-bar").value;
