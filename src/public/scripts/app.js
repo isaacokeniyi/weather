@@ -3,7 +3,10 @@ const cityName = document.querySelector("#city");
 const firstLine = document.querySelector("#firstLine");
 const secondLine = document.querySelector("#secondLine");
 const forecastInfo = document.querySelector("#forecast-info");
+const moreInfo = document.querySelector("#more-info");
 const dialog = document.querySelector("#dialogBox");
+
+let forecastList;
 
 const toggleDialog = (head, msg) => {
   if (!head) {
@@ -27,17 +30,18 @@ const updateWeather = (data) => {
 
 const updateForecast = (data) => {
   const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  forecastInfo.innerHTML = ``;
+  forecastList = "";
 
-  data.list.forEach((forecast) => {
+  data.list.forEach((forecast, index) => {
     const date = new Date(forecast.dt * 1000);
     const day = days[date.getDay()];
     const time = `${date.getHours().toString().padStart(2, "0")}:00`;
     const minTemp = `${Math.round(forecast.main.temp_min).toString().padStart(2, " ")}°C`;
     const maxTemp = `${Math.round(forecast.main.temp_max).toString()}°C`.padEnd(4, " ");
 
-    forecastInfo.innerHTML += `<li>${day} ${time} | ${minTemp}/${maxTemp} | ${forecast.weather[0].description}</li>`;
+    forecastList += `<li>${day} ${time} | ${minTemp}/${maxTemp} | ${forecast.weather[0].description}</li>`;
   });
+  forecastInfo.innerHTML = forecastList;
 };
 
 const getWeather = async (e) => {
