@@ -65,13 +65,15 @@ body {
   font-size: 1.2rem;
 }
 
-#forecast-info {
+#forecast-info,
+#more-info {
   list-style: none;
   text-align: left;
   font-family: monospace;
 }
 
-#forecast-info li {
+#forecast-info li,
+#more-info li {
   white-space-collapse: preserve;
 }
 
@@ -79,7 +81,7 @@ body {
   display: none;
 }
 
-#more-info {
+#more-info button {
   padding: 0.8rem;
   background-color: #4caf50;
   border-radius: 1.5rem;
@@ -88,7 +90,7 @@ body {
   font-weight: bold;
 }
 
-#more-info:hover {
+#more-info button:hover {
   background-color: #45a049;
 }
 
