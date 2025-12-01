@@ -5,6 +5,7 @@ const secondLine = document.querySelector("#secondLine");
 const forecastInfo = document.querySelector("#forecast-info");
 const moreInfo = document.querySelector("#more-info");
 const dialog = document.querySelector("#dialogBox");
+const forecastHead = document.querySelector("#forecast-head");
 
 let forecastList;
 
@@ -51,6 +52,8 @@ const showMore = () => {
   for (let i = 0; i < 8; i++) {
     children[i].style.display = "none";
   }
+
+  forecastHead.textContent = `Next 5 Days Forecast`;
 };
 
 const getWeather = async (e) => {
