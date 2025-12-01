@@ -108,14 +108,16 @@ body {
   .heading {
     font-size: 1.5rem;
   }
-  #forecast-info {
+  #forecast-info,
+  #more-info {
     font-size: 0.8rem;
     padding-left: 0;
   }
 }
 
 @media (max-width: 350px) {
-  #forecast-info li {
+  #forecast-info li,
+  #more-info li {
     font-size: 0.6rem;
   }
 }
