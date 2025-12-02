@@ -53,6 +53,8 @@ const showMore = () => {
     children[i].style.display = "none";
   }
 
+  moreInfo.innerHTML += `  <li><button>Show less</button></li>`;
+
   forecastHead.textContent = `Next 5 Days Forecast`;
 };
 
