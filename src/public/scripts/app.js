@@ -53,9 +53,14 @@ const showMore = () => {
     children[i].style.display = "none";
   }
 
-  moreInfo.innerHTML += `  <li><button>Show less</button></li>`;
+  moreInfo.innerHTML += `<li><button onclick="showLess()">Show less</button></li>`;
 
   forecastHead.textContent = `Next 5 Days Forecast`;
+};
+
+const showLess = () => {
+  moreInfo.innerHTML = `<li><button onclick="showMore()">Show more</button></li>`;
+  forecastHead.textContent = `Next 24 Hours Forecast`;
 };
 
 const getWeather = async (e) => {
