@@ -88,6 +88,7 @@ body {
   border: none;
   color: white;
   font-weight: bold;
+  margin-top: 0.5rem;
 }
 
 #more-info button:hover {
