@@ -12,5 +12,16 @@
       "sizes": "192x192",
       "type": "image/png"
     }
+  ],
+  "widgets": [
+    {
+      "id": "Weather-widget",
+      "name": "Weather widget",
+      "description": "Shows current temperature & condition",
+      "src": "/widgets/weather.html",
+      "type": "text",
+      "update": "interval",
+      "update_interval": 30
+    }
   ]
 }
