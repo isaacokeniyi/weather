@@ -15,7 +15,7 @@
   ],
   "widgets": [
     {
-      "id": "Weather-widget",
+      "id": "weather-widget",
       "name": "Weather widget",
       "description": "Shows current temperature & condition",
       "src": "/widgets/weather.html",
