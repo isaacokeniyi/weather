@@ -8,7 +8,6 @@ const ASSETS = [
   "/images/favicon.ico",
   "/scripts/app.js",
   "/manifest.json",
-  "/widgets/weather.html",
 ];
 
 self.addEventListener("install", (event) => {
