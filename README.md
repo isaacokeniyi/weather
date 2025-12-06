@@ -8,11 +8,12 @@ A simple installable progressive web app that shows real time weather in any loc
 
 ## **Features**
 
-- Current Weather Data - Temp, min & max temp, humidity, wind speed...
+- Current Weather Data - Temp, description, humidity, wind speed...
 - Search by city
 - Offline support - caches previous data and pulls information out of them.
 - Installable - Add to home screen or desktop
 - Responsive - works on all devices
+- Forecast - shows weather for next 24 hours / 5 days
 
 ## **Tech Stack**
 
