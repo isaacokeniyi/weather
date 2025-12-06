@@ -19,13 +19,13 @@ self.addEventListener("activate", (event) => {
   event.waitUntil(
     caches
       .keys()
-      .then((keys) =>
-        Promise.all(
-          keys.map((key) => {
-            if (key !== CACHE_NAME) return caches.delete(key);
-          })
-        )
-      )
+      .then((keys) => {
+        const deletePromises = keys.map((key) => {
+          if (key !== CACHE_NAME) return caches.delete(key);
+        });
+
+        return Promise.all(deletePromises.filter(Boolean));
+      })
       .then(() => self.clients.claim())
   );
 });
