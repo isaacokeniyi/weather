@@ -62,7 +62,8 @@ body {
 #weather-info {
   margin-top: 2rem;
   text-align: left;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
+  font-weight: 600;
 }
 
 #forecast-info,
@@ -113,6 +114,9 @@ body {
   #more-info {
     font-size: 0.8rem;
     padding-left: 0;
+  }
+  #weather-info {
+    font-size: 1.2rem;
   }
 }
 
