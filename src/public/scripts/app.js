@@ -46,6 +46,7 @@ const updateForecast = (data) => {
 };
 
 const showMore = () => {
+  if (!forecastList) return;
   moreInfo.innerHTML = forecastList;
   const children = moreInfo.children;
 
